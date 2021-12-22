@@ -297,16 +297,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               icon: Icon(
                                 Icons.add,
                                 color: Colors.transparent,
-                                size: 20,
+                                size: 18,
                               ),
                               options: FFButtonOptions(
-                                width: 150,
+                                width: 130,
                                 height: 44,
                                 color: Colors.white,
                                 textStyle: GoogleFonts.getFont(
                                   'Poppins',
                                   color: Color(0xFF606060),
-                                  fontSize: 17,
+                                  fontSize: 16,
                                 ),
                                 elevation: 4,
                                 borderSide: BorderSide(
@@ -319,16 +319,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           ),
                           Align(
                             alignment: AlignmentDirectional(-0.53, 0.04),
-                            child: Container(
-                              width: 22,
-                              height: 22,
-                              clipBehavior: Clip.antiAlias,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                              ),
-                              child: Image.network(
-                                'https://i0.wp.com/nanophorm.com/wp-content/uploads/2018/04/google-logo-icon-PNG-Transparent-Background.png?w=1000&ssl=1',
-                                fit: BoxFit.contain,
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                              child: Container(
+                                width: 22,
+                                height: 22,
+                                clipBehavior: Clip.antiAlias,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Image.network(
+                                  'https://i0.wp.com/nanophorm.com/wp-content/uploads/2018/04/google-logo-icon-PNG-Transparent-Background.png?w=1000&ssl=1',
+                                  fit: BoxFit.contain,
+                                ),
                               ),
                             ),
                           ),

@@ -51,7 +51,7 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
             children: [
               Container(
                 width: double.infinity,
-                height: 100,
+                height: 50,
                 decoration: BoxDecoration(
                   color: Color(0xFFEEEEEE),
                 ),
@@ -87,8 +87,7 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                     children: [
                       Expanded(
                         child: Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(10, 10, 10, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 0),
                           child: TextFormField(
                             onChanged: (_) => EasyDebounce.debounce(
                               'firstNameController',
@@ -232,8 +231,7 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                     children: [
                       Expanded(
                         child: Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(10, 10, 10, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 0),
                           child: TextFormField(
                             onChanged: (_) => EasyDebounce.debounce(
                               'emailController',
@@ -312,8 +310,7 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                     children: [
                       Expanded(
                         child: Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(10, 10, 10, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 0),
                           child: TextFormField(
                             controller: passwordController,
                             obscureText: !passwordVisibility,
@@ -389,8 +386,7 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                     children: [
                       Expanded(
                         child: Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(10, 10, 10, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 0),
                           child: TextFormField(
                             controller: confirmPassController,
                             obscureText: !confirmPassVisibility,
