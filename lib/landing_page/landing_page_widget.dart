@@ -53,7 +53,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                         final textUsersRecord = snapshot.data;
                         return Text(
                           valueOrDefault<String>(
-                            textUsersRecord.displayName,
+                            textUsersRecord.firstName,
                             'User',
                           ),
                           textAlign: TextAlign.end,
