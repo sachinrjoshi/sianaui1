@@ -6,6 +6,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 
 import 'schema/users_record.dart';
 import 'schema/appconfigdata_record.dart';
+import 'schema/usercars_record.dart';
 import 'schema/serializers.dart';
 
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -14,6 +15,7 @@ export 'schema/serializers.dart';
 
 export 'schema/users_record.dart';
 export 'schema/appconfigdata_record.dart';
+export 'schema/usercars_record.dart';
 
 Stream<List<UsersRecord>> queryUsersRecord(
         {Query Function(Query) queryBuilder,
@@ -28,6 +30,13 @@ Stream<List<AppconfigdataRecord>> queryAppconfigdataRecord(
         bool singleRecord = false}) =>
     queryCollection(
         AppconfigdataRecord.collection, AppconfigdataRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Stream<List<UsercarsRecord>> queryUsercarsRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(UsercarsRecord.collection, UsercarsRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
 Stream<List<T>> queryCollection<T>(
