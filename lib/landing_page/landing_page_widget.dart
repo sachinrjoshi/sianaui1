@@ -124,7 +124,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                   StreamBuilder<List<AppconfigdataRecord>>(
                     stream: queryAppconfigdataRecord(
                       queryBuilder: (appconfigdataRecord) => appconfigdataRecord
-                          .where('key', isEqualTo: dDCarModelValue),
+                          .where('key', isEqualTo: dDCarMakeValue),
                       singleRecord: true,
                     ),
                     builder: (context, snapshot) {
