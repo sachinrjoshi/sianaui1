@@ -2,7 +2,7 @@ import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../landing_page/landing_page_widget.dart';
+import '../register_add_car_page/register_add_car_page_widget.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -488,13 +488,16 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                               return;
                             }
 
-                            await Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => LandingPageWidget(),
-                              ),
-                              (r) => false,
-                            );
+                            if (currentUserEmailVerified) {
+                              await Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      RegisterAddCarPageWidget(),
+                                ),
+                                (r) => false,
+                              );
+                            }
                           },
                           text: 'Register',
                           options: FFButtonOptions(
