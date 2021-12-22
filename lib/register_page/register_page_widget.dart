@@ -488,16 +488,14 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                               return;
                             }
 
-                            if (currentUserEmailVerified) {
-                              await Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      RegisterAddCarPageWidget(),
-                                ),
-                                (r) => false,
-                              );
-                            }
+                            await Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    RegisterAddCarPageWidget(),
+                              ),
+                              (r) => false,
+                            );
                           },
                           text: 'Register',
                           options: FFButtonOptions(

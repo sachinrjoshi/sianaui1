@@ -4,22 +4,20 @@ import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../register_add_city/register_add_city_widget.dart';
+import '../landing_page/landing_page_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class RegisterAddCarPageWidget extends StatefulWidget {
-  const RegisterAddCarPageWidget({Key key}) : super(key: key);
+class RegisterAddCityWidget extends StatefulWidget {
+  const RegisterAddCityWidget({Key key}) : super(key: key);
 
   @override
-  _RegisterAddCarPageWidgetState createState() =>
-      _RegisterAddCarPageWidgetState();
+  _RegisterAddCityWidgetState createState() => _RegisterAddCityWidgetState();
 }
 
-class _RegisterAddCarPageWidgetState extends State<RegisterAddCarPageWidget> {
-  String dDCarMakeValue;
-  String dDCarModelValue;
+class _RegisterAddCityWidgetState extends State<RegisterAddCityWidget> {
+  String dDCityValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -51,7 +49,7 @@ class _RegisterAddCarPageWidgetState extends State<RegisterAddCarPageWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 100, 0, 0),
                   child: Text(
-                    'Add Car',
+                    'Select City',
                     style: FlutterFlowTheme.title3.override(
                       fontFamily: 'Poppins',
                       color: Color(0xFFB20D0D),
@@ -67,7 +65,7 @@ class _RegisterAddCarPageWidgetState extends State<RegisterAddCarPageWidget> {
                 StreamBuilder<List<AppconfigdataRecord>>(
                   stream: queryAppconfigdataRecord(
                     queryBuilder: (appconfigdataRecord) =>
-                        appconfigdataRecord.where('type', isEqualTo: 'carmake'),
+                        appconfigdataRecord.where('type', isEqualTo: 'city'),
                     singleRecord: true,
                   ),
                   builder: (context, snapshot) {
@@ -83,20 +81,20 @@ class _RegisterAddCarPageWidgetState extends State<RegisterAddCarPageWidget> {
                         ),
                       );
                     }
-                    List<AppconfigdataRecord> dDCarMakeAppconfigdataRecordList =
+                    List<AppconfigdataRecord> dDCityAppconfigdataRecordList =
                         snapshot.data;
                     // Return an empty Container when the document does not exist.
                     if (snapshot.data.isEmpty) {
                       return Container();
                     }
-                    final dDCarMakeAppconfigdataRecord =
-                        dDCarMakeAppconfigdataRecordList.isNotEmpty
-                            ? dDCarMakeAppconfigdataRecordList.first
+                    final dDCityAppconfigdataRecord =
+                        dDCityAppconfigdataRecordList.isNotEmpty
+                            ? dDCityAppconfigdataRecordList.first
                             : null;
                     return FlutterFlowDropDown(
-                      initialOption: dDCarMakeValue ??= 'Select Car Make',
-                      options: dDCarMakeAppconfigdataRecord.valuearray.toList(),
-                      onChanged: (val) => setState(() => dDCarMakeValue = val),
+                      initialOption: dDCityValue ??= 'Select City',
+                      options: dDCityAppconfigdataRecord.valuearray.toList(),
+                      onChanged: (val) => setState(() => dDCityValue = val),
                       width: 350,
                       height: 50,
                       textStyle: FlutterFlowTheme.bodyText1.override(
@@ -126,83 +124,14 @@ class _RegisterAddCarPageWidgetState extends State<RegisterAddCarPageWidget> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  StreamBuilder<List<AppconfigdataRecord>>(
-                    stream: queryAppconfigdataRecord(
-                      queryBuilder: (appconfigdataRecord) => appconfigdataRecord
-                          .where('key', isEqualTo: dDCarMakeValue),
-                      singleRecord: true,
-                    ),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: CircularProgressIndicator(
-                              color: FlutterFlowTheme.primaryColor,
-                            ),
-                          ),
-                        );
-                      }
-                      List<AppconfigdataRecord>
-                          dDCarModelAppconfigdataRecordList = snapshot.data;
-                      // Return an empty Container when the document does not exist.
-                      if (snapshot.data.isEmpty) {
-                        return Container();
-                      }
-                      final dDCarModelAppconfigdataRecord =
-                          dDCarModelAppconfigdataRecordList.isNotEmpty
-                              ? dDCarModelAppconfigdataRecordList.first
-                              : null;
-                      return FlutterFlowDropDown(
-                        initialOption: dDCarModelValue ??= 'Select Car Model',
-                        options:
-                            dDCarModelAppconfigdataRecord.valuearray.toList(),
-                        onChanged: (val) =>
-                            setState(() => dDCarModelValue = val),
-                        width: 350,
-                        height: 50,
-                        textStyle: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Poppins',
-                          color: Color(0xFFB20D0D),
-                        ),
-                        icon: Icon(
-                          Icons.arrow_drop_down,
-                          color: Color(0xFFB20D0D),
-                          size: 15,
-                        ),
-                        fillColor: Colors.white,
-                        elevation: 2,
-                        borderColor: Colors.transparent,
-                        borderWidth: 0,
-                        borderRadius: 0,
-                        margin: EdgeInsetsDirectional.fromSTEB(12, 4, 12, 4),
-                        hidesUnderline: true,
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
                   FFButtonWidget(
                     onPressed: () async {
-                      final usercarsCreateData = createUsercarsRecordData(
-                        user: currentUserReference,
-                        carmake: dDCarMakeValue,
-                        carmodel: dDCarModelValue,
+                      final usersUpdateData = createUsersRecordData(
+                        city: dDCityValue,
                       );
-                      await UsercarsRecord.collection
-                          .doc()
-                          .set(usercarsCreateData);
+                      await currentUserReference.update(usersUpdateData);
                     },
-                    text: 'Add Car',
+                    text: 'Select City',
                     options: FFButtonOptions(
                       width: 130,
                       height: 40,
@@ -223,7 +152,7 @@ class _RegisterAddCarPageWidgetState extends State<RegisterAddCarPageWidget> {
                       await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => RegisterAddCityWidget(),
+                          builder: (context) => LandingPageWidget(),
                         ),
                       );
                     },
