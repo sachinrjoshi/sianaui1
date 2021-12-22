@@ -1,4 +1,5 @@
 import '../auth/auth_util.dart';
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -25,9 +26,80 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Align(
+                    alignment: AlignmentDirectional(0, 0),
+                    child: StreamBuilder<UsersRecord>(
+                      stream: UsersRecord.getDocument(currentUserReference),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50,
+                              height: 50,
+                              child: CircularProgressIndicator(
+                                color: FlutterFlowTheme.primaryColor,
+                              ),
+                            ),
+                          );
+                        }
+                        final textUsersRecord = snapshot.data;
+                        return Text(
+                          valueOrDefault<String>(
+                            textUsersRecord.displayName,
+                            'User',
+                          ),
+                          textAlign: TextAlign.end,
+                          style: FlutterFlowTheme.subtitle2.override(
+                            fontFamily: 'Poppins',
+                            color: Color(0xFFB20D0D),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(0, 0),
+                    child: StreamBuilder<UsersRecord>(
+                      stream: UsersRecord.getDocument(currentUserReference),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50,
+                              height: 50,
+                              child: CircularProgressIndicator(
+                                color: FlutterFlowTheme.primaryColor,
+                              ),
+                            ),
+                          );
+                        }
+                        final textUsersRecord = snapshot.data;
+                        return Text(
+                          textUsersRecord.city,
+                          textAlign: TextAlign.end,
+                          style: FlutterFlowTheme.subtitle2.override(
+                            fontFamily: 'Poppins',
+                            color: Color(0xFFB20D0D),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Row(
               mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(
@@ -38,21 +110,39 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                 ),
               ],
             ),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 100, 0, 0),
-                  child: Text(
-                    'Welcome to Siana Platform',
-                    style: FlutterFlowTheme.title3.override(
-                      fontFamily: 'Poppins',
-                      color: Color(0xFFB20D0D),
+            StreamBuilder<UsersRecord>(
+              stream: UsersRecord.getDocument(currentUserReference),
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: CircularProgressIndicator(
+                        color: FlutterFlowTheme.primaryColor,
+                      ),
                     ),
-                  ),
-                ),
-              ],
+                  );
+                }
+                final rowUsersRecord = snapshot.data;
+                return Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 100, 0, 0),
+                      child: Text(
+                        'Welcome to Siana Platform',
+                        style: FlutterFlowTheme.title3.override(
+                          fontFamily: 'Poppins',
+                          color: Color(0xFFB20D0D),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
             Row(
               mainAxisSize: MainAxisSize.max,
